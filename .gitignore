@@ -1,3 +1,9 @@
-.DS_Store
-*.pdf
-*.zip
+# ignore all 
+*
+
+# except readme and .sh files
+!readme
+!*.sh
+
+# everywhere
+!*/
