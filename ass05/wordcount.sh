@@ -40,7 +40,7 @@ function print_stats {
 ## start here ##
 
 # error checking #
-[ "${BASH_VERSINFO:-0}" -le 4 ] && \
+[ "${BASH_VERSINFO[0]}" -le 4 ] && \
   echo "Associative Arrays not supported" && exit
 [ $# -ne 1 ] && echo "usage: $0 <filename>" && exit
 [ ! -f $1 ] && echo "$0: $1: Not a file" && exit
