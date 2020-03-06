@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+clear
 ####  CS2043 Final Backup Project  ####
 
 # This file is a backup submission, in 
@@ -25,7 +25,7 @@ function isprime {
   [ $i -eq $(($n+1)) ] && true || false
 }
 
-function printmenu { clear
+function printmenu {
   echo "-------  MENU  -------"
   echo "1. check if prime"
   echo "2. find closest prime"
@@ -33,27 +33,27 @@ function printmenu { clear
   echo -n "What you choose? "
 }
 
+## Start here ##
 if [ $# -eq 1 ]; then
   if isprime $1; then echo "prime"
     else echo "not"; fi
-  else printmenu
-    read n; case $n in
-      "1") echo -n "num? " && read x
-        if isprime $x; then echo "prime"
-          else echo "not"; fi
-        ;;
-      "2") echo -n "num? "; read x
-        if isprime $x; then echo "$x is already prime."
-          else a=$(($x-1)) && while ! isprime $a; do
-              a=$(($a-1)); done # lower prime
-            b=$(($x+1)) && while ! isprime $b; do
-              b=$(($b+1)); done # higher prime
-            if [ $(($x-$a)) -eq $(($b-$x)) ]; then echo \
-              "Special case: $x is the mean of $a and $b"
-              else [ $(($x-$a)) -le $(($b-$x)) ] && \
-                echo "-: $a" || echo "+: $b"; fi
+  else echo -n "num? " && read x
+  if isprime $x; then y=1; fi; printmenu
+  read n; case $n in
+      "1") [ -v y ] && echo "prime" || echo "not";;
+      "2") if [ -v y ]; then echo "$x is already prime."
+        else a=$(($x-1)) && while ! isprime $a; do
+            a=$(($a-1)); done # lower prime
+          b=$(($x+1)) && while ! isprime $b; do
+            b=$(($b+1)); done # higher prime
+          if [ $(($x-$a)) -eq $(($b-$x)) ]; then echo \
+            "Special case: $x is the mean of $a and $b"
+            else [ $(($x-$a)) -le $(($b-$x)) ] && \
+              echo "-: $a" || echo "+: $b"; fi
         fi;;
-      "3") echo -n "TODO"
+      "3") echo -n "num? " && read x
+        if isprime $x; then echo "$x is prime. Only prime factor: $x"
+        else echo "TODO"; fi
         ;;
       *) echo "invalid option. please restart." && exit;;
     esac
