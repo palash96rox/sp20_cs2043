@@ -58,10 +58,12 @@ clear; if [ $# -eq 1 ]; then
       fi;;
     "3") if [ -v y ]; then echo "$x is prime bb"
       else i=2; declare -a factors
-        while [$x -ge "1"]; do
+        while [ ! $x -eq "1" ]; do echo "i=$i"
           [ $(($x%$i)) -eq "0" ] && if isprime $i
-            then factors+=($i); fi; $i=$(($i+1))
-        done && echo "${#factors[@]} prime factors: ${$factors[@]}";;
+            then factors+=$i && x=$(($x/$i)) && echo "$x from $i"
+          fi; i=$(($i+1)); echo "now i=$i"
+        done && echo "${#factors[@]} prime factors: ${factors[@]}"
+      fi;;
     *) echo "invalid option. please restart." && exit;;
   esac
 fi
