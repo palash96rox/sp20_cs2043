@@ -1,1 +1,10 @@
-This folder contains the project for the course. The program mimics a calendar but is a little more customizable and, more importantly, lives in the command line. 
+The project (bonus assignment) was to be a command line calendar that helps one manage their time. However, considering that it is a bonus `assignment` with a deadline, currently, the program performs a bunch of prime ops. You can check if a number is prime, find the closest prime, or find the prime factors of the number.
+
+Running instructions:
+- `$ git clone git@github.com:palash96rox/sp20_cs2043.git`
+- `$ cd sp20_cs2043/proj`
+- `$ chmod +x ./prime.sh`
+- `$ ./prime.sh`
+You can also supply a number argument to check if it is prime by default.
+
+As for the other idea, I shall work on it without a deadline. Or at the very least one more suited to the scope of that. As always, it'll be up on github. You can track it here - https://github.com/palash96rox/time

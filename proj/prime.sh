@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-####  CS2043 Final Backup Project  ####
+####  CS2043 Bonus Assignment  ####
 
 # This file is a backup submission, in 
 # case the main project is not finished
@@ -11,7 +11,7 @@
 # on a number entered. Ther user may
 # - check if a number is prime
 # - find the closest prime
-# - find a numbers prime factors
+# - find a number's prime factors
 # By default the program checks if the number is prime or not
 
 ####     see README for more       ####
