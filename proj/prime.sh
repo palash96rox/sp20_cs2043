@@ -20,10 +20,10 @@
 ## helper functions ##
 
 function isprime {
-  n=`bc <<< "scale=0; sqrt(($1))"`; i=2
+  local n=`bc <<< "scale=0; sqrt(($1))"`; local i=2
   while [ $i -le $n ]; do
     [ "$(($1%$i))" == "0" ] && break
-    i=`expr $i + 1`
+    local i=`expr $i + 1`
   done
   [ $i -eq $(($n+1)) ] && true || false
 }
@@ -58,10 +58,10 @@ clear; if [ $# -eq 1 ]; then
       fi;;
     "3") if [ -v y ]; then echo "$x is prime bb"
       else i=2; declare -a factors
-        while [ ! $x -eq "1" ]; do echo "i=$i"
+        while [ ! $x -eq "1" ]; do
           [ $(($x%$i)) -eq "0" ] && if isprime $i
-            then factors+=$i && x=$(($x/$i)) && echo "$x from $i"
-          fi; i=$(($i+1)); echo "now i=$i"
+            then factors+=($i) && x=$(($x/$i)) && i=2
+          fi || i=$(($i+1))
         done && echo "${#factors[@]} prime factors: ${factors[@]}"
       fi;;
     *) echo "invalid option. please restart." && exit;;
